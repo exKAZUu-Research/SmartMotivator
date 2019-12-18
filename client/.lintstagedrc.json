@@ -1,0 +1,6 @@
+{
+  "linters": {
+    "client/{src,__tests__}/**/*.js": ["eslint --fix", "git add"],
+    "*.{js,json,ts}": ["prettier --write", "git add"]
+  }
+}

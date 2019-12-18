@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>クイズ API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>クイズ API</h1>
+
+      <div class="article">
+        <h2>今からプレイするクイズのデータを取得</h2>
+        <h3>POST new_quizzes/:course/:genre/start.json</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Content-Type: application/x-www-form-urlencoded
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST new_quizzes/english/ngsl_normal_1/start.json</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">userId=37fb4fc3-3a95-44fb-adb0-ba03212c72d9</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;973f6c58fb65282eb986207d74f68592&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 9b7c447b-6267-467b-85fa-b64d2504452b
+X-Runtime: 0.022691
+Content-Length: 4854</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">[
+  {
+    &quot;id&quot;: &quot;4298d0c2-7d64-4fb3-9a6f-8638f75ab79d&quot;,
+    &quot;key&quot;: &quot;agreement&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;agreement&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;agreement&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;同意&quot;,
+      &quot;画像&quot;,
+      &quot;時計&quot;,
+      &quot;委託&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/agreement&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;79ec3cd6-056c-4620-ba9b-301420c5edde&quot;,
+    &quot;key&quot;: &quot;assumption&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;assumption&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;assumption&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;仮定&quot;,
+      &quot;達成&quot;,
+      &quot;獲得&quot;,
+      &quot;気分&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/assumption&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;e9b1e885-daa1-4684-8728-822a77ffe884&quot;,
+    &quot;key&quot;: &quot;background&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;background&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;background&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;背景&quot;,
+      &quot;選手&quot;,
+      &quot;口&quot;,
+      &quot;地下&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/background&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;4a738038-e8f7-4b17-84da-7cba6752d788&quot;,
+    &quot;key&quot;: &quot;facility&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;facility&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;facility&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;施設&quot;,
+      &quot;危険&quot;,
+      &quot;家族&quot;,
+      &quot;得点&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/facility&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;a2cee188-3b98-41cd-9644-695cbe7eb151&quot;,
+    &quot;key&quot;: &quot;hate&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;hate&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;hate&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;～を憎む&quot;,
+      &quot;～を登る&quot;,
+      &quot;させる&quot;,
+      &quot;～の方を好む&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/hate&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;a793e38f-e83d-4dc7-9967-719c9ec0aa73&quot;,
+    &quot;key&quot;: &quot;inform&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;inform&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;inform&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;～に知らせる&quot;,
+      &quot;～に従う&quot;,
+      &quot;～を回す&quot;,
+      &quot;～を広げる&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/inform&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;2a18d105-2a0c-41c0-9a0c-7e15da63bc4e&quot;,
+    &quot;key&quot;: &quot;repeat&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;repeat&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;repeat&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;繰り返す&quot;,
+      &quot;～の準備をする&quot;,
+      &quot;～を探す&quot;,
+      &quot;起こる&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/repeat&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;c04cb289-9111-49f1-83ed-4622ab546d08&quot;,
+    &quot;key&quot;: &quot;slightly&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;slightly&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;slightly&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;少し&quot;,
+      &quot;確かに&quot;,
+      &quot;すでに&quot;,
+      &quot;二回&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/slightly&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;a541f62c-766e-4ebd-9634-338185ef1c83&quot;,
+    &quot;key&quot;: &quot;trial&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;trial&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;trial&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;試験&quot;,
+      &quot;物質&quot;,
+      &quot;家&quot;,
+      &quot;注意&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/trial&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  },
+  {
+    &quot;id&quot;: &quot;4c24d7ba-4e33-4b5f-b9b9-51293e1b7297&quot;,
+    &quot;key&quot;: &quot;valuable&quot;,
+    &quot;courseKey&quot;: &quot;english&quot;,
+    &quot;label&quot;: &quot;valuable&quot;,
+    &quot;subLabel&quot;: null,
+    &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+    &quot;problem&quot;: &quot;valuable&quot;,
+    &quot;inputType&quot;: &quot;text&quot;,
+    &quot;answers&quot;: [
+      &quot;価値のある&quot;,
+      &quot;喜ばしい&quot;,
+      &quot;平らな&quot;,
+      &quot;慣習による&quot;
+    ],
+    &quot;answerSize&quot;: 4,
+    &quot;correctIndex&quot;: 0,
+    &quot;shuffle&quot;: true,
+    &quot;commentaryLabel&quot;: null,
+    &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/valuable&quot;,
+    &quot;defaultPercentage&quot;: null,
+    &quot;font&quot;: null,
+    &quot;images&quot;: {
+    },
+    &quot;correctCount&quot;: 0,
+    &quot;totalCount&quot;: 0,
+    &quot;hijack&quot;: null
+  }
+]</pre>
+      </div>
+    </div>
+  </body>
+</html>

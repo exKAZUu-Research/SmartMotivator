@@ -1,0 +1,5 @@
+Pkg.update()
+Pkg.add("JuMP")
+Pkg.add("Ipopt")
+Pkg.add("JSON")
+Pkg.add("ArgParse")

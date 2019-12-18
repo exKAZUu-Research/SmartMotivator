@@ -1,0 +1,30 @@
+= page_title 'まとめてアカウント発行（確認）'
+
+p 以下の学生を登録します。
+
+table.table.table-bordered
+  thead
+    tr
+      th = User.t :student_id
+      th = User.t :login_id
+      th
+  tbody
+    - @student_ids.each do |student_id|
+      - login_id = @current_school.login_id_of(student_id)
+      - user = @users[login_id]
+      tr[class=(user && 'warning')]
+        td = student_id
+        td = login_id
+        td
+          - if user
+            p 登録済みです
+          - else
+            p 新しく登録します
+
+p 本当に登録してもよろしいですか？
+form[method='POST']
+  input[type='hidden' name='student_id' value=params['student_id']]
+  input[type='hidden' name='confirmed' value='true']
+  p
+    button.btn.btn-default>[onclick='javascript:history.back();'] 戻る
+    button.btn.btn-primary>[type='submit'] 登録する

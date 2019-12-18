@@ -1,0 +1,71 @@
+head
+  = javascript_include_tag "chart_utils.js"
+  = javascript_include_tag "filter_utils.js"
+
+
+= page_title "Reports"
+
+p
+  strong
+    = Study.t(:course)
+    | :
+  br
+  - if school_selected == "None"
+    = reports_selectable_course 'None'
+    - @studies_courses.each do |s|
+      = " | "
+      = reports_selectable_course s
+  - else
+      = reports_selectable_course(@studies_courses[0], true)
+p
+  strong
+    = School.t
+    | :
+  br
+  = reports_selectable_school 'None'
+  - @schools.each do |s|
+    = " | "
+    = reports_selectable_school s
+p
+  strong
+    'Time Selection
+    | :
+  br
+table
+  tr
+    td
+      'Start Time
+    td
+      input type="text" value=start_time_selected.to_date.to_s id="start_time" data-behaviour="datepicker" data-date-end-date="0d"
+  tr
+    td
+      'End Time
+    td
+      input type="text" value=end_time_selected.to_date.to_s id="end_time" data-behaviour="datepicker" data-date-end-date="0d"
+br
+p = reports_selectable_time "Use Date", start_time_selected, end_time_selected, "send_data"
+p
+strong
+  'Grouping Selection
+  | :
+br
+  = reports_selectable_grouping 1
+  = " | "
+  = reports_selectable_grouping 3
+  = " | "
+  = reports_selectable_grouping 7
+br
+
+ul id="myTab" class="nav nav-pills nav-justified" role="tablist" data-tabs="tabs"
+  li: a href="#UserChartTab" data-toggle="tab" UserChart
+  li: a href="#QuizzesAverageTab" data-toggle="tab" Solved quizzes on average
+div class="tab-content"
+  div role="tabpanel" class="tab-pane fade in active" id="UserChartTab"
+    br
+    canvas id="UserChart"
+  div role="tabpanel" class="tab-pane fade" id="QuizzesAverageTab"
+    br
+    canvas id="ChartQuizzesAverage"
+
+= javascript_include_tag "user_chart.js"
+= javascript_include_tag "quiz_average_chart.js"

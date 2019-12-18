@@ -1,0 +1,46 @@
+= page_title Study.t
+p
+  strong
+    = Study.t(:course)
+    | :
+  br
+  = quizzes_selectable_course 'None'
+  - @studies_courses.each do |s|
+    = " | "
+    = quizzes_selectable_course s
+p
+  strong
+    = School.t
+    | :
+  br
+  = quizzes_selectable_school 'None'
+  - @schools.each do |s|
+    = " | "
+    = quizzes_selectable_school s
+
+- if @studies.empty?
+  p （データはありません）
+- else
+
+  .text-center = paginate @studies
+  .table-responsive: table.table.table-bordered
+    thead
+      tr
+        th.text-center = quizzes_sortable "quiz_key", Study.t(:quiz_key)
+        th.text-center = quizzes_sortable "genre", Study.t(:genre)
+        th.text-center = quizzes_sortable "sum_total_count", Study.t(:total_count)
+        th.text-center = quizzes_sortable "sum_correct_count", Study.t(:correct_count)
+        th.text-center = quizzes_sortable "ratio", "正答率"
+        th.text-center = quizzes_sortable "count_user", "ユーザ数"
+        th.text-center = quizzes_sortable "count_correct_user", "正答ユーザ数"
+    tbody
+      - @studies.each do |s|
+        tr
+          td.text-left = s.quiz_key
+          td.text-center = s.genre
+          td.text-center = s.sum_total_count
+          td.text-center = s.sum_correct_count
+          td.text-center = "%d %%" % [100.0 * s.ratio]
+          td.text-center = s.count_user
+          td.text-center = s.count_correct_user
+  .text-center = paginate @studies

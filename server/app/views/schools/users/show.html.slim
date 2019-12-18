@@ -1,0 +1,20 @@
+= page_title '%s の利用状況' % @user.name
+
+- if @histories.empty?
+  p 学習履歴はありません
+- else
+  = render 'shared/study_history_chart', study_histories: @histories
+  .table-responsive: table.table.table-bordered
+    thead
+      tr
+        th 週
+        th 解答数
+        th 正解率
+        th 覚えた問題数
+    tbody
+      - @histories.reverse_each do |h|
+        tr
+          td = l h.week_start
+          td = h.total_count
+          td = percent(h.correct_count, h.total_count)
+          td = h.memorized_word

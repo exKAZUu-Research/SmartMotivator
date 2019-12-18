@@ -1,0 +1,25 @@
+= page_title @user.name
+
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :user_data
+  .col-sm-9
+    ul.nav.nav-tabs
+      - current = params[:kind]
+      - @all_kinds.each do |kind|
+        li[class=(current == kind ? :active : nil)]
+          = link_to kind, user_data_admin_user_path(@user, kind: kind)
+
+    table.table.table-borderd
+      thead
+        tr
+          th.text-center = UserData.t :kind
+          th.text-center = UserData.t :value
+          th.text-center = UserData.t :time
+      tbody
+        - @data.each do |d|
+          tr
+            td.text-center = d.kind
+            td.monospace = d.value
+            td.text-center = l d.time
+    .text-center = paginate @data

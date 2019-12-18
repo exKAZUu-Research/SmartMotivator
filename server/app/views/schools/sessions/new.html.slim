@@ -1,0 +1,12 @@
+= page_title 'ログイン'
+
+- if flash.key? :alert
+  .alert.alert-danger = flash[:alert]
+
+p = "%sのパスワードを入力してください" % current_school.any_name
+
+= form_tag school_session_path do
+  .form-group
+    label[for="password"] パスワード
+    input.form-control#password[type="password" name="password" required autofocus]
+  button.btn.btn-success[type="submit"] ログイン

@@ -1,0 +1,16 @@
+= page_title 'アカウント発行'
+
+- if flash.key? :notice
+  .alert.alert-info = flash[:notice]
+
+- if current_school.prefix.blank?
+  .alert.alert-warning アカウント発行機能はご利用いただけません。
+- else
+  p.text-right
+    => link_to '新規発行', new_school_user_path, class: 'btn btn-success'
+    => link_to 'まとめて発行', import_school_users_path, class: 'btn btn-success'
+
+  - if @users.empty?
+    p 生徒はいません
+  - else
+    = render 'publish_table', users: @users, teacher_exits: @teacher_exits

@@ -1,0 +1,35 @@
+= page_title @title
+ruby:
+  fields = %w(
+   key
+   label
+   pre_text
+   problem
+   input_type
+   answers
+   answer_size
+   correct_index
+   shuffle
+   commentary
+  )
+  klass = ->(x) { %w(problem answers).include?(x) ? :long : nil }
+
+.text-center = paginate @quizzes
+.table-responsive: table.table.table-bordered.table-condensed.fixed-table-layout
+  thead
+    tr
+      - fields.each do |n|
+        th[class=klass[n]] = n
+  tbody
+    - @quizzes.each do |q|
+      tr
+        - fields.each do |n|
+          - v = q[n]
+          td[class=klass[n]]
+            - if Array === v
+              ol
+                - v.each do |x|
+                  li = x
+            - else
+              = v
+.text-center = paginate @quizzes

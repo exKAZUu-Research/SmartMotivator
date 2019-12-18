@@ -1,0 +1,16 @@
+= page_title '管理画面'
+
+table.table.table-bordered.no-width
+  caption 設定値
+  tr
+    th クライアントの最低要求バージョン
+    td = Settings.minimum_required_client_version
+  tr
+    th 「package.json」に指定されているバージョン
+    td = @version || '（取得できませんでした）'
+  tr
+    th 実験開始日
+    td = Calendar.experiment_start.try { |x| l(x, format: :long) } || '-'
+  tr
+    th 実験終了日
+    td = Calendar.experiment_end.try { |x| l(x, format: :long) } || '-'

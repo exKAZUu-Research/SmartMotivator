@@ -1,0 +1,24 @@
+# OSX
+#
+.DS_Store
+
+# node.js
+#
+npm-debug.log
+yarn-error.log
+node_modules/
+
+# vim
+#
+*.swp
+
+# logfiles
+logfile
+
+# R
+.Rhistory
+
+# python
+__pycache__
+
+.idea/

@@ -1,0 +1,32 @@
+doctype html
+html
+  - school_name = current_school.any_name
+  head
+    title = @title ? "%s | %s" % [@title, school_name] : school_name
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://www.gstatic.com/charts/loader.js'
+  body
+    nav.navbar.navbar-inverse.navbar-static-top: .container-fluid
+      .navbar-header
+        - if signed_in?
+          button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#navmenu"]
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        a.navbar-brand[href=school_path] = school_name
+      - if signed_in?
+        .collapse.navbar-collapse#navmenu
+          ul.nav.navbar-nav
+            li: a[href=school_users_path] 生徒一覧
+            - if current_permission == School::PERMISSION_WRITE
+              li: a[href=school_quizzes_path] = "問題一覧"
+              li: a[href=published_school_users_path] アカウント発行
+              li: a[href=school_teachers_path] = "%s一覧" % Teacher.t
+          ul.nav.navbar-nav.navbar-right
+            li = link_to 'ログアウト', school_session_path, method: :delete
+    .container-fluid
+      = yield

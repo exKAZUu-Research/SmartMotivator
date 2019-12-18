@@ -1,0 +1,101 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datepicker';
+
+/* ----- ----- ----- ----- layout ----- ----- ----- ----- */
+.container-fluid {
+  max-width: 1024px;
+}
+main {
+  padding-bottom: 20px;
+}
+footer {
+  min-height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f7f7f7;
+  border-top: solid 1px #eee;
+}
+
+/* ----- ----- ----- ----- common ----- ----- ----- ----- */
+
+.monospace {
+  font-family: $font-family-monospace;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.bottom-space {
+  margin-bottom: 20px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.display-inline {
+  display: inline;
+}
+
+.no-width {
+  width: auto;
+}
+
+.label-normal {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+.fixed-table-layout {
+  table-layout: fixed;
+
+  th, td {
+    width: 100px;
+    overflow-wrap: break-word;
+    &.long {
+      width: 300px;
+    }
+  }
+}
+
+/* ----- ----- ----- ----- special ----- ----- ----- ----- */
+
+.pill {
+  $color: #070;
+  $bgcolor: white;
+
+  display: inline-flex;
+  margin: 1px 3px;
+  border: solid 1px $color;
+  border-radius: 3px;
+  background-color: $bgcolor;
+  font-size: 10px;
+
+  > .key {
+    display: block;
+    white-space: nowrap;
+    padding: 1px 3px;
+    color: $bgcolor;
+    background-color: $color;
+  }
+  > .value {
+    display: block;
+    white-space: nowrap;
+    padding: 1px 3px;
+  }
+}

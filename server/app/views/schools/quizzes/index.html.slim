@@ -1,0 +1,36 @@
+- if flash.key? :alert
+  .panel.panel-danger
+    .panel-heading 問題の更新に失敗しました。
+    .panel-body = flash[:alert]
+
+= page_title '問題一覧'
+
+- quiz_count = QuizGenre.where(course_key: @course.key).group(:genre_key).count(:id)
+table.table.table-bordered.no-width
+  thead
+    tr
+      th = 'ordering'
+      th = 'key'
+      th = 'label'
+      th = 'quiz_size'
+      th = '総問題数'
+  tbody
+    - Genre.where(course_key: @course.key).order(:ordering).each do |g|
+      tr
+        td.text-right = g.ordering
+        td = g.key
+        td = g.label
+        td.text-right = g.quiz_size
+        td.text-right
+          = link_to (quiz_count[g.key] || 0), school_quiz_path(g.key)
+
+
+.panel.panel-default
+  .panel-heading クイズデータのアップロード
+  .panel-body
+    = form_tag school_quizzes_path, method: :post, multipart: true do
+      input[type='file' name='file' required]
+      .text-right
+        button.btn.btn-success = 'アップロード'
+.text-right
+  a.btn.btn-default>[data-no-turbolink="true" href="/quiz_example.xlsx"] サンプル

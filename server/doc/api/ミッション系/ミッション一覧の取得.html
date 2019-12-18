@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ミッション系 API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ミッション系 API</h1>
+
+      <div class="article">
+        <h2>ミッション一覧の取得</h2>
+        <h3>GET /mission.json</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /mission.json?userId=bc375d59-5e76-47c4-b65e-04e3de0f8ea9</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">userId: bc375d59-5e76-47c4-b65e-04e3de0f8ea9</pre>
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;e9d25e36e41511b105f8dcc6bfa2c7f9&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 072f4455-dc94-4211-a7f7-479c744e3c27
+X-Runtime: 0.028501
+Content-Length: 1062</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;counts&quot;: {
+    &quot;answer&quot;: 0,
+    &quot;correct&quot;: 0,
+    &quot;multiCorrect&quot;: 0,
+    &quot;memorized&quot;: 0,
+    &quot;fastCorrect2000&quot;: 0,
+    &quot;multiFastCorrect2000&quot;: 0,
+    &quot;fastCorrect4000&quot;: 0,
+    &quot;multiFastCorrect4000&quot;: 0,
+    &quot;fastCorrect6000&quot;: 0,
+    &quot;multiFastCorrect6000&quot;: 0
+  },
+  &quot;missions&quot;: [
+    {
+      &quot;type&quot;: &quot;answer&quot;,
+      &quot;quizCount&quot;: null,
+      &quot;threshold&quot;: null,
+      &quot;startValue&quot;: 0,
+      &quot;goalValue&quot;: 12,
+      &quot;reward&quot;: 12,
+      &quot;uuid&quot;: &quot;609741b8-8f3c-488d-babf-b47fae8cd3f5&quot;,
+      &quot;isShort&quot;: true
+    },
+    {
+      &quot;type&quot;: &quot;correct&quot;,
+      &quot;quizCount&quot;: null,
+      &quot;threshold&quot;: null,
+      &quot;startValue&quot;: 0,
+      &quot;goalValue&quot;: 10,
+      &quot;reward&quot;: 12,
+      &quot;uuid&quot;: &quot;d1d6af83-3054-4c72-99da-c35f5813f62e&quot;,
+      &quot;isShort&quot;: true
+    },
+    {
+      &quot;type&quot;: &quot;fastCorrect&quot;,
+      &quot;quizCount&quot;: null,
+      &quot;threshold&quot;: 4000,
+      &quot;startValue&quot;: 0,
+      &quot;goalValue&quot;: 11,
+      &quot;reward&quot;: 16,
+      &quot;uuid&quot;: &quot;9b3c9faf-36e4-41c2-81aa-717a1c9d95ab&quot;,
+      &quot;isShort&quot;: true
+    },
+    {
+      &quot;type&quot;: &quot;memorized&quot;,
+      &quot;quizCount&quot;: null,
+      &quot;threshold&quot;: null,
+      &quot;startValue&quot;: 0,
+      &quot;goalValue&quot;: 50,
+      &quot;reward&quot;: 120,
+      &quot;uuid&quot;: &quot;30a9046c-6c2e-487e-bb75-eb5a3a419da1&quot;,
+      &quot;isShort&quot;: false
+    }
+  ],
+  &quot;lastResetAt&quot;: &quot;2018-02-22T14:13:17+09:00&quot;,
+  &quot;point&quot;: 5,
+  &quot;rank&quot;: 3,
+  &quot;rankingName&quot;: &quot;レベル1～4内ランキング&quot;,
+  &quot;highscoreRank&quot;: 1,
+  &quot;missionClearedToday&quot;: false,
+  &quot;level&quot;: 1,
+  &quot;bonus&quot;: 1.0,
+  &quot;levelPointRange&quot;: {
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 30.0
+  }
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+ruby:
+  def save_div(a, b)
+    b == 0 ? 0 : 1.0 * a / b
+  end
+  keys = ['週', '解答数', '正解率']
+  values = study_histories.map { |h| [h.week_start, h.total_count, save_div(h.correct_count, h.total_count)] }
+  json = ([keys] + values).to_json
+#chart_div[style="width: 900px; height: 500px;" data-histories=json]

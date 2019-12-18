@@ -1,0 +1,8 @@
+- if signed_in?
+  .alert.alert-info
+    | 現在ログイン中です
+
+  - if current_permission == School::PERMISSION_WRITE
+    = link_to '学校名を変更する', school_edit_path, class: 'btn btn-default'
+- else
+  = link_to 'ログインはこちらから', new_school_session_path, class: 'btn btn-default'

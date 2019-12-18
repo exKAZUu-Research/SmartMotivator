@@ -1,0 +1,13 @@
+= page_title 'まとめてアカウント発行'
+
+- if flash.key? :alert
+  .alert.alert-danger = flash[:alert]
+
+p 学生IDを入力してください。
+p 複数入力する場合は、IDごとに改行してください。
+
+form[method='POST' action=import_school_users_path]
+  - txt = "学生ID1\n学生ID2\n学生ID3\n..."
+  textarea.form-control[name='student_id' rows="10" placeholder=txt]
+  br
+  button.btn.btn-primary[type='submit'] 確認

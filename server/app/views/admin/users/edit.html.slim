@@ -1,0 +1,43 @@
+= page_title @user.name
+
+- if flash.key? :alert
+  .alert.alert-danger = flash[:alert]
+- if flash.key? :notice
+  .alert.alert-info = flash[:notice]
+
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :edit
+  .col-sm-9
+    .panel.panel-default
+      .panel-body
+        = form_for @user, url: admin_user_path do |f|
+          .form-group
+            = f.label :point
+            = f.text_field :point, class: 'form-control', required: true
+          button.btn.btn-primary[type='submit', data-confirm='本当にユーザ情報を設定しますか？'] 設定
+
+    .panel.panel-default
+      .panel-body
+        ruby:
+          opts = { class: 'btn btn-primary' }
+          if @user.login_id.present?
+            opts['data-confirm'] = [
+              "#{@user.name}さんのログインIDは設定済みです。本当にリセットしてもよろしいですか？",
+              "",
+              "login_id: #{@user.login_id}",
+              "password: #{@user.password}",
+            ].join("\n")
+          end
+        div = "#{User.t :login_id}: #{@user.login_id}"
+        div = "#{User.t :password}: #{@user.password}"
+        div = link_to "ログインID設定", edit_auth_admin_user_path(@user.id), opts
+
+    .panel.panel-default
+      .panel-body
+        div = "#{User.t :role}: #{@user.role}"
+        div = link_to "開発者切り替え", toggle_developer_role_admin_user_path(@user.id), 'data-confirm': "本当に開発者ロールを切り替えますか?", class: 'btn btn-primary'
+
+    .panel.panel-default
+      .panel-body
+        div = link_to "ユーザ削除", admin_user_path(@user.id), method: :delete, 'data-confirm': "本当に削除しますか?", class: 'btn btn-danger'

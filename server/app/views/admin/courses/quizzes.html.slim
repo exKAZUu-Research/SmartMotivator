@@ -1,0 +1,14 @@
+= page_title @title
+
+.text-center = paginate @quizzes
+.table-responsive: table.table.table-bordered
+  thead
+    tr
+      - Quiz.column_names.each do |n|
+        th = Quiz.t n
+  tbody
+    - @quizzes.each do |q|
+      tr
+        - Quiz.column_names.each do |n|
+          td = q[n]
+.text-center = paginate @quizzes

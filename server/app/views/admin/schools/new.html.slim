@@ -1,0 +1,7 @@
+= page_title '学校の新規登録'
+
+= render 'shared/error_messages', model: @school
+
+= form_for @school, url: admin_schools_path do |f|
+  = render 'form', form: f
+  button.btn.btn-success[type='submit'] 作成

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ミッション系 API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ミッション系 API</h1>
+
+      <div class="article">
+        <h2>ミッションポイントランキング</h2>
+        <h3>GET /mission/ranking.json</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET /mission/ranking.json?userId=6b81df28-6420-458d-9ac0-deb2b6a9b834</pre>
+
+            <h4>Query Parameters</h4>
+            <pre class="request query_parameters highlight">userId: 6b81df28-6420-458d-9ac0-deb2b6a9b834</pre>
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;dc0309bdf2c4601c34f2d7a8cb7ea1ed&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 7ce6fb62-15ff-46b5-8b61-70b8a42fd1eb
+X-Runtime: 0.006483
+Content-Length: 429</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;name&quot;: &quot;レベル1～4内ランキング&quot;,
+  &quot;topUsers&quot;: [
+    {
+      &quot;id&quot;: &quot;f37910ab-8fac-4207-bd44-a8a62b08992c&quot;,
+      &quot;name&quot;: &quot;Jiro&quot;,
+      &quot;icon&quot;: &quot;user&quot;,
+      &quot;color&quot;: &quot;orchid&quot;,
+      &quot;point&quot;: 20
+    },
+    {
+      &quot;id&quot;: &quot;0573f6e6-98ea-4b8a-a003-dfb5d299083e&quot;,
+      &quot;name&quot;: &quot;Taro&quot;,
+      &quot;icon&quot;: &quot;user&quot;,
+      &quot;color&quot;: &quot;mediumvioletred&quot;,
+      &quot;point&quot;: 10
+    },
+    {
+      &quot;id&quot;: &quot;6b81df28-6420-458d-9ac0-deb2b6a9b834&quot;,
+      &quot;name&quot;: &quot;Saburo&quot;,
+      &quot;icon&quot;: &quot;user&quot;,
+      &quot;color&quot;: &quot;hotpink&quot;,
+      &quot;point&quot;: 5
+    }
+  ],
+  &quot;rivalUsers&quot;: null,
+  &quot;rivalTopRank&quot;: 1,
+  &quot;hiddenRivalCount&quot;: 0
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

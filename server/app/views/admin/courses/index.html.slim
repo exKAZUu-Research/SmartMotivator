@@ -1,0 +1,19 @@
+= page_title Course.t
+
+p.text-right = link_to '新規作成', new_admin_course_path, class: 'btn btn-success'
+
+- quiz_count = QuizGenre.group(:course_key).count(:id)
+table.table.table-bordered.no-width
+  thead
+    tr
+      th = Course.t :key
+      th = Course.t :label
+      th = '総問題数'
+      th = '選択中のユーザ'
+  tbody
+    - @courses.each do |c|
+      tr
+        td = c.key
+        td = link_to c.label, admin_course_path(c.key)
+        td.text-right = quiz_count[c.key] || 0
+        td.text-right = link_to "#{@n_users[c.key]}人", admin_users_path(course: c.key)

@@ -1,0 +1,64 @@
+= page_title @user.name
+
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :studies
+  .col-sm-9
+    table.table.table-bordered.no-width
+      thead
+        tr
+          th.text-center = Study.t :course
+          th.text-center = Study.t :genre
+          th.text-center[colspan=2] 記憶済み
+          th.text-center[colspan=2] 回答済み
+          th.text-center 総問題数
+      tbody
+        - @stats.each do |course, h|
+          - h.each do |genre, stats|
+            tr
+              td.text-center = course
+              td.text-center = genre
+              td.text-right
+                = number_with_delimiter stats.memorized
+                | 問
+              td.text-right = number_to_percentage(1.0 * stats.memorized / stats.total)
+              td.text-right
+                = number_with_delimiter stats.answered
+                | 問
+              td.text-right = number_to_percentage(1.0 * stats.answered / stats.total)
+              td.text-right
+                = number_with_delimiter stats.total
+                | 問
+
+    .text-right
+      = link_to 'CSVダウンロード', download_studies_admin_user_path(@user), class: 'btn btn-default'
+
+    - if @all_pairs.size >= 2
+      ul.nav.nav-tabs
+        - current_course = params[:course]
+        - current_genre = params[:genre]
+        - @all_pairs.each do |(course, genre)|
+          li[class=(current_course == course && current_genre == genre ? :active : nil)]
+            = link_to "#{course}/#{genre}", studies_admin_user_path(@user, course: course, genre: genre)
+
+    table.table.table-borderd
+      thead
+        tr
+          th.text-center = Study.t :course
+          th.text-center = Study.t :genre
+          th.text-center = Study.t :quiz_key
+          th.text-center = Study.t :total_count
+          th.text-center = Study.t :correct_count
+          th.text-center = Study.t :consecutive_correct_count
+          th.text-center = Study.t :available_at
+      tbody
+        - @data.each do |d|
+          tr
+            td.text-center = d.course
+            td.text-center = d.genre
+            td.text-center = d.quiz_key
+            td.text-center = d.total_count
+            td.text-center = d.correct_count
+            td.text-center = d.consecutive_correct_count
+            td.text-center = l d.available_at
+    .text-center = paginate @data

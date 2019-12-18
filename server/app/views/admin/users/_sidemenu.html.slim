@@ -1,0 +1,17 @@
+ul.nav.nav-pills.nav-stacked
+  li[class=(active == :show && :active)]
+    = link_to 'ユーザ詳細', admin_user_path(@user)
+  li[class=(active == :study_histories && :active)]
+    = link_to study_histories_admin_user_path(@user) do
+      | 週ごとの学習状況
+  li[class=(active == :studies && :active)]
+    = link_to studies_admin_user_path(@user) do
+      | 問題ごとの学習状況
+      span.badge = @study_count
+  li[class=(active == :user_data && :active)]
+    = link_to user_data_admin_user_path(@user) do
+      | 行動ログ
+      span.badge = @data_count
+  li[class=(active == :edit && :active)]
+    = link_to edit_admin_user_path(@user) do
+      | ユーザ情報変更

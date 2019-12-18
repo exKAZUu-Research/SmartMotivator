@@ -1,0 +1,75 @@
+ja:
+  app_name: スマートモチベーター
+  words:
+    roles:
+      default: 通常
+      id_auth: ID認証
+      specific_email: ドメイン認証メール
+      trial: 試用
+      developer: 開発者
+  activerecord:
+    models:
+      user: ユーザ
+      study: 学習
+      school: 学校
+      course: コース
+      teacher: 講師
+      prediction_model: 予測モデル
+    attributes:
+      user:
+        id: ユーザID
+        name: ニックネーム
+        ready: アプリ開始済み
+        icon: 'アイコン名'
+        color: 'アイコン色'
+        course: 学習コース
+        email: メールアドレス
+        auto_randomize: 設定自動ランダム
+        setting: 設定
+        student_id: 学生ID
+        teacher_id: 講師
+        login_id: ログインID
+        password: パスワード
+        point: ミッションポイント
+        school: 学校
+        last_access: 最終アクセス時刻
+        client_version: 端末バージョン
+        experiment: 実験参加者
+        experiment_mode: 実験グループ
+        created_at: 作成日時
+        updated_at: 更新日時
+        role: ロール
+      school:
+        any_name: '名前'
+        internal_name: 管理名称
+        display_name: 表示名称
+        is_experiment: 実験用
+        is_experiment2: 実験用(2)
+        quiz_editable: クイズデータ変更可能
+        use_beacon: ビーコンを用いて出欠確認を行う
+        course: コース
+        prefix: ログインIDプレフィックス
+        contact_text: お問い合わせ方法
+        email_domain: メールアドレスのドメイン
+        login_id: 学校共通のログインID
+        login_password: 学校共通のログインパスワード
+        read_password: '管理画面 閲覧パスワード'
+        write_password: '管理画面 編集パスワード'
+        created_at: 作成日時
+        updated_at: 更新日時
+      teacher:
+        name: 講師名
+        created_at: 作成日時
+      study:
+        course: コース
+        genre: ジャンル
+        quiz_key: 番号
+        total_count: 合計解答数
+        consecutive_correct_count: 連続正解数
+        correct_count: 合計正解数
+        available_at: 次回出現時刻
+      study_history:
+        course: コース
+        week_start: 週
+        total_count: 合計解答数
+        correct_count: 合計正解数

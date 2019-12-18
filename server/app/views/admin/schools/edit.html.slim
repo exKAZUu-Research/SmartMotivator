@@ -1,0 +1,5 @@
+= page_title '編集'
+
+= form_for @school, url: admin_school_path(@school.id), method: :put do |f|
+  = render 'form', form: f
+  button.btn.btn-success[type='submit'] 更新
