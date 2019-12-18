@@ -136,7 +136,7 @@ GEM
       actionmailer (>= 4.0, < 6)
       activesupport (>= 4.0, < 6)
     execjs (2.7.0)
-    ffi (1.9.23)
+    ffi (1.11.3)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gon (6.2.0)
