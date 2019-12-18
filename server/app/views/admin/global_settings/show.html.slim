@@ -1,0 +1,19 @@
+= page_title '設定'
+
+.table-responsive: table.table.table-bordered
+  thead
+    tr
+      th KEY
+      th VALUE
+      th
+  tbody
+    - @settings.each do |(key, value)|
+      tr
+        td = key
+        td = value || '(none)'
+        td
+          = form_tag admin_global_settings_path, class: 'form-inline'
+            input.input-group[type='hidden' name='key' value=key]
+            .form-group
+              input.form-control[id=key name='value' required]
+            button.btn.btn-primary<[type='submit'] Update

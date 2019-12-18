@@ -1,0 +1,58 @@
+
+.form-group
+  .checkbox: label
+    - checked = form.object.is_experiment
+    input[type='checkbox' name='school[is_experiment]' value='1' checked=checked]
+    = School.t :is_experiment
+.form-group
+  .checkbox: label
+    - checked = form.object.is_experiment2
+    input[type='checkbox' name='school[is_experiment2]' value='1' checked=checked]
+    = School.t :is_experiment2
+.form-group
+  .checkbox: label
+    - checked = form.object.quiz_editable
+    input[type='checkbox' name='school[quiz_editable]' value='1' checked=checked]
+    = School.t :quiz_editable
+.form-group
+  .checkbox: label
+    - checked = form.object.use_beacon
+    input[type='checkbox' name='school[use_beacon]' value='1' checked=checked]
+    = School.t :use_beacon
+
+.form-group
+  = form.label :internal_name
+  = form.text_field :internal_name, class: 'form-control', required: true
+.form-group
+  = form.label :display_name
+  input.form-control[value=form.object.display_name disabled]
+.form-group
+  = form.label :contact_text
+  .alert.alert-warning
+    strong> 注意:
+    | URLやメールアドレスは行ごとに書いてください。一行にまとめると正常にリンクになりません。
+  - placeholder = "アプリのお問い合わせに表示する内容\nhttp://www.example.com\nメールも\n"
+  = form.text_area :contact_text, class: 'form-control', rows: 6, placeholder: placeholder
+.form-group
+  - courses = Course.pluck(:label, :key)
+  = form.label :course
+  = form.select :course, courses, { include_blank: '（選択してください）' }, class: 'form-control', required: true
+.form-group
+  = form.label :prefix
+  = form.text_field :prefix, class: 'form-control'
+.form-group
+  = form.label :email_domain
+  = form.text_field :email_domain, class: 'form-control'
+.form-group
+  = form.label :login_id
+  = form.text_field :login_id, class: 'form-control'
+.form-group
+  = form.label :login_password
+  = form.text_field :login_password, class: 'form-control'
+
+.form-group
+  = form.label :read_password
+  = form.text_field :read_password, class: 'form-control'
+.form-group
+  = form.label :write_password
+  = form.text_field :write_password, class: 'form-control'

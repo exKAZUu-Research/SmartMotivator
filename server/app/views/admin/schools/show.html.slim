@@ -1,0 +1,68 @@
+= page_title '学校の詳細'
+
+.clearfix
+  .pull-left
+    div = link_to 'ユーザ一覧', admin_users_path(school_id: @school.id), class: 'btn btn-default'
+  .pull-right
+    div = link_to '編集', edit_admin_school_path(@school.id), class: 'btn btn-success'
+br
+
+.table-responsive: table.table.table-bordered
+  tr
+    th = School.t :is_experiment
+    td = @school.is_experiment
+  tr
+    th = School.t :is_experiment2
+    td = @school.is_experiment2
+  tr
+    th = School.t :quiz_editable
+    td = @school.quiz_editable
+  tr
+    th = School.t :internal_name
+    td = @school.internal_name
+  tr
+    th = School.t :display_name
+    td = @school.display_name
+  tr
+    th = School.t :course
+    td = course_name(@school.course)
+  tr
+    th = School.t :use_beacon
+    td = @school.use_beacon
+  tr
+    th = School.t :contact_text
+    td
+      - if @school.contact_text.present?
+        pre = @school.contact_text
+  tr
+    th = School.t :prefix
+    td = @school.prefix
+  tr
+    th = School.t :login_id
+    td = @school.login_id
+  tr
+    th = School.t :login_password
+    td = @school.login_password
+  tr
+    th = School.t :email_domain
+    td = @school.email_domain
+  tr
+    th = School.t :read_password
+    td: input.form-control[readonly value=@school.read_password]
+  tr
+    th = School.t :write_password
+    td: input.form-control[readonly value=@school.write_password]
+  tr
+    th 学校用ページ
+    td
+      - url = school_url(@school.id)
+      - if @school.has_page?
+        = link_to url, url, target: '_blank'
+      - else
+        .text-danger パスワードを設定するまで利用できません
+  tr
+    th = School.t :created_at
+    td = l @school.created_at
+  tr
+    th = School.t :updated_at
+    td = l @school.updated_at

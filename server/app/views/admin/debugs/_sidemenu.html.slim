@@ -1,0 +1,4 @@
+ul.nav.nav-pills.nav-stacked
+  li[class=(@active == :show && :active)] = link_to '情報', admin_debug_path
+  li[class=(@active == :mail && :active)] = link_to 'メール', mail_admin_debug_path
+  li[class=(@active == :report && :active)] = link_to 'Slack', report_admin_debug_path

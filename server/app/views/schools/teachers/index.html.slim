@@ -1,0 +1,23 @@
+= page_title "#{Teacher.t}一覧"
+
+p.text-right = link_to '新規作成', new_school_teacher_path, class: 'btn btn-success'
+
+- if @teachers.empty?
+  p = "#{Teacher.t}は登録されていません"
+- else
+  .table-responsive: table.table.table-bordered
+    thead
+      tr
+        th = Teacher.t(:name)
+        th = Teacher.t(:created_at)
+        th アクション
+    tbody
+      - @teachers.each do |teacher|
+        tr
+          td = teacher.name
+          td = l teacher.created_at
+          td
+            = link_to '編集', edit_school_teacher_path(teacher), class: 'btn btn-default'
+            = ' '
+            - opt = { method: :delete, form_class: 'display-inline', class: 'btn btn-danger', data: { confirm: '本当に削除してもよろしいですか？' } }
+            = button_to '削除', school_teacher_path(teacher), opt

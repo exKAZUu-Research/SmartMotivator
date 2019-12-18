@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: willing_quiz_development
+test:
+  <<: *default
+  database: willing_quiz_test
+production:
+  <<: *default
+  database: willing_quiz_production2
+  username: <%= ENV['TMP_RAILS_DATABASE_USERNAME'] %>
+  password: <%= ENV['TMP_RAILS_DATABASE_PASSWORD'] %>
+  host: <%= ENV['TMP_RAILS_DATABASE_HOST'] %>

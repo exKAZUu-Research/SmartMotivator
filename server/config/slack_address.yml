@@ -1,0 +1,4 @@
+slack:
+  uri: "https://hooks.slack.com/services/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"
+  channel: "#monitor-wq-dev"
+  exception_notification_channel: "#errors-server-dev"

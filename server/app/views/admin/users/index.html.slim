@@ -1,0 +1,95 @@
+= page_title 'ユーザ一覧'
+
+- if @users.empty?
+  p ユーザーは存在しません。
+- else
+  p
+    | アンケート終了済みユーザー:
+    =< "%d / %d (%.2f%%)" % [@n_ready_users, @n_users, 100.0 * @n_ready_users / @n_users]
+
+  - if @user_query.present?
+    table.table.table-bordered.no-width
+      - @user_query.each do |key, value|
+        tr
+          th = User.t key
+          td = value
+          td: a.glyphicon.glyphicon-remove[href=admin_users_path(@user_query.merge key => nil)]
+
+  details
+    summary バージョンごとの人数
+    table.table.table-bordered.no-width[style="margin: 10px"]
+      thead
+        tr
+          th.text-center バージョン
+          th.text-center 全ユーザ数
+          th.text-center 完了ユーザ数
+          th.text-center 最終アクセス
+      tbody
+        - @all_user_hash.each do |key, record_for_all|
+          - record_for_ready = @ready_user_hash[key]
+          - pass = VersionChecker.pass?(key)
+          tr[class=(pass && :success)]
+            td.text-center
+              - if key.presence
+                = link_to key, admin_users_path(@user_query.merge client_version: key)
+              - else
+                = link_to '（なし）', admin_users_path(@user_query.merge client_version: '')
+            td.text-right = "#{record_for_all.count}人"
+            td.text-right = "#{(record_for_ready.try(:count) || 0)}人"
+            td
+              = record_for_all.try(:last_access).try{|x| l(x)}
+              = record_for_all.try(:last_access).try{|x| "（#{time_ago_in_words(x)}）" }
+      tfoot
+        - n = @all_user_hash.values.inject(0) { |sum, x| sum + x.count }
+        - m = @ready_user_hash.values.inject(0) { |sum, x| sum + x.count }
+        tr
+          th.text-center 合計
+          td.text-right = "#{n}人"
+          td.text-right = "#{m}人"
+          td
+
+
+  .text-center = paginate @users
+  .table-responsive: table.table.table-bordered
+    thead
+      tr
+        th.text-center
+          = User.t :id
+          = ' / '
+          = User.t :name
+        th.text-center Tags
+        th.text-center = User.t(:point)
+        th.text-center = User.t :school
+        th.text-center = User.t :setting
+        th.text-center = User.t :last_access
+        th.text-center = User.t :client_version
+        th.text-center = User.t :ip_address
+    tbody
+      - @users.each do |u|
+        tr
+          td.text-left
+            .monospace.nowrap = link_to u.id[0...8], admin_user_path(u.id)
+            div = u.name
+          td.text-left
+            - if u.email.present?
+              .pill
+                .key メール
+                .value 有
+            a.pill[href=admin_users_path(@user_query.merge course: u.course)]
+              .key コース
+              .value = course_name(u.course)
+            - if u.role.present?
+              .pill
+                .key ロール
+                .value = role_name(u.role)
+            - if u.experiment_mode.present?
+              .pill
+                .key 実験
+                .value = u.experiment_mode
+          td.text-right = "#{number_with_delimiter u.point} pt"
+          td.text-left = u.school.try { |s| link_to s.internal_name, admin_users_path(@user_query.merge school_id: s.id) }
+          td: .small.monospace[style='max-width: 400px'] = u.setting.to_json
+          td.text-center = u.last_access.try { |x| l x }
+          td.text-center = link_to(u.client_version, admin_users_path(@user_query.merge client_version: u.client_version))
+          td.text-center = u.ip_address
+  .text-center = paginate @users

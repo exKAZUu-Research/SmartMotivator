@@ -1,0 +1,28 @@
+= page_title '機能推薦用の予測モデル'
+
+- if err = flash[:error]
+  h5 エラーが発生しました：
+  pre = err
+
+- if @prediction_model.trained_at
+  p
+    | 最終更新日時: &ensp;
+    = l @prediction_model.trained_at
+- else
+  p デフォルトのモデルを使用しています
+
+p = link_to "モデル更新", admin_prediction_models_path, method: 'create', 'data-confirm': "モデルを更新しますか？", class: 'btn btn-primary'
+p = link_to "デフォルトのモデルに戻す", reset_admin_prediction_models_path, method: 'post', 'data-confirm': "デフォルトのモデルに戻しますか？", class: 'btn btn-default'
+
+#recommendation_checking_availability
+  .alert.alert-info
+    span.glyphicon.glyphicon-time>
+    | 推薦スクリプトの動作確認を行っています。
+#recommendation_available(style='display: none')
+  .alert.alert-success
+    span.glyphicon.glyphicon-ok>
+    | 推薦スクリプトは正しく動作しています。
+#recommendation_unavailable(style='display: none')
+  .alert.alert-danger
+    span.glyphicon.glyphicon-exclamation-sign>
+    | 推薦スクリプトが正しく動作していません。

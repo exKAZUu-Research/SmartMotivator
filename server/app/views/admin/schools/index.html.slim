@@ -1,0 +1,43 @@
+= page_title '学校一覧'
+
+p.text-right = link_to '新規作成', new_admin_school_path, class: 'btn btn-success'
+
+- if @schools.empty?
+  p データはありません
+- else
+  .table-responsive: table.table.table-bordered
+    tr
+      th = School.t :internal_name
+      th = School.t :course
+      th = School.t :contact_text
+      th = School.t :prefix
+      th = School.t :login_id
+      th = School.t :email_domain
+      th = School.t :created_at
+      th その他のリンク
+    - @schools.each do |school|
+      tr
+        td
+          - if school.is_experiment
+            .label.label-danger> = School.t(:is_experiment)
+          - if school.is_experiment2
+            .label.label-danger> = School.t(:is_experiment2)
+          = link_to school.internal_name, admin_school_path(school.id)
+        td
+          = course_name(school.course)
+          - if school.quiz_editable
+            .label.label-info< = School.t(:quiz_editable)
+        td
+          - if school.contact_text.present?
+            | 設定済み
+          - else
+            .text-muted デフォルト
+        td = school.prefix
+        td = school.login_id
+        td = school.email_domain
+        td = l(school.created_at)
+        td
+          - if school.has_page?
+            = link_to '学校用のページ', school_path(school.id), target: '_blank'
+          - else
+            p.text-danger パスワードが設定されていません

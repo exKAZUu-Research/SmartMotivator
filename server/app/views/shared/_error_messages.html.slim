@@ -1,0 +1,7 @@
+- if model.errors.full_messages.present?
+  .panel.panel-danger
+    .panel-heading 保存できませんでした
+    .panel-body
+      ul
+        - model.errors.full_messages.each do |msg|
+          li = msg

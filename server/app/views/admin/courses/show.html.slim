@@ -1,0 +1,56 @@
+= page_title @course.label
+
+p.text-right
+  - if @course.editable
+    - msg = "本当に「#{@course.label}」を削除してもよろしいですか？"
+    - option = { class: 'btn btn-danger', method: 'delete', data: { confirm: msg } }
+    = link_to '削除', admin_course_path(@course.key), option
+
+table.table.table-bordered.no-width
+  tr
+    th = Course.t :key
+    td = @course.key
+  tr
+    th = Course.t :label
+    td = @course.label
+  tr
+    th = '総問題数'
+    td.text-right
+      = link_to QuizGenre.where(course_key: @course.key).count, quizzes_admin_course_path(@course.key)
+  tr
+    th = Course.t :editable
+    td.text-center = @course.editable
+
+- quiz_count = QuizGenre.where(course_key: @course.key).group(:genre_key).count(:id)
+table.table.table-bordered.no-width
+  thead
+    tr
+      th = Genre.t :ordering
+      th = Genre.t :key
+      th = Genre.t :label
+      th = Genre.t :quiz_size
+      th = '総問題数'
+  tbody
+    - Genre.where(course_key: @course.key).order(:ordering).each do |g|
+      tr
+        td.text-right = g.ordering
+        td = g.key
+        td = g.label
+        td.text-right = g.quiz_size
+        td.text-right
+          = link_to (quiz_count[g.key] || 0), quizzes_admin_course_path(@course.key, g.key)
+
+
+- if @course.editable || Rails.env.development?
+  .panel.panel-default
+    .panel-heading クイズデータのアップロード
+    .panel-body
+      = form_tag file_admin_course_path(@course.key), method: :post, multipart: true do
+        input[type='file' name='file' required]
+        .text-right
+          button.btn.btn-success = 'アップロード'
+  .text-right
+    - if defined?(::Axlsx)
+      a.btn.btn-default>[data-no-turbolink="true" href=file_admin_course_path(@course.key)]
+        | 現在のデータから作成（時間がかかります）
+    a.btn.btn-default>[data-no-turbolink="true" href="/quiz_example.xlsx"] サンプル

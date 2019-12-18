@@ -1,0 +1,20 @@
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :show
+  .col-sm-9
+    = form_tag mail_admin_debug_path, class: 'form-horizontal' do
+      .form-group
+        label.col-sm-2[for="mail_to"] To:
+        .col-sm-10
+          input#mail_to[type="email" class="form-control" name="mail[to]" placeholder="user@example.com" required]
+      .form-group
+        label.col-sm-2[for="mail_subject"] Subject:
+        .col-sm-10
+          input#mail_subject[class="form-control" name="mail[subject]"]
+      .form-group
+        label.col-sm-2[for="mail_body"] Body:
+        .col-sm-10
+          textarea#mail_body[class="form-control" name="mail[body]"]
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-primary[type="submit"] Send

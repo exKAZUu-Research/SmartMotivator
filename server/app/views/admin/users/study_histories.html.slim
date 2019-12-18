@@ -1,0 +1,22 @@
+= page_title @user.name
+
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :study_histories
+  .col-sm-9
+    table.table.table-borderd
+      thead
+        tr
+          th.text-center = StudyHistory.t :course
+          th.text-center = StudyHistory.t :week_start
+          th.text-center = StudyHistory.t :total_count
+          th.text-center = StudyHistory.t :correct_count
+      tbody
+        - @study_histories.each do |h|
+          tr
+            td.text-center = h.course
+            td.text-center = h.week_start
+            td.text-center = h.total_count
+            td.text-center = h.correct_count
+
+= render 'shared/study_history_chart', study_histories: @study_histories

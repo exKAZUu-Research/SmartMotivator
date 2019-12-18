@@ -1,0 +1,7 @@
+= page_title '%sの編集' % Teacher.t
+
+= render 'shared/error_messages', model: @teacher
+
+= form_for @teacher, url: school_teacher_path(@teacher), method: :put do |f|
+  = render 'form', form: f
+  button.btn.btn-success[type='submit'] 更新

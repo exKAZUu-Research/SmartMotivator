@@ -1,0 +1,4 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">SiGZbmq62EUA_iEuiYlBYc6tySX4V1l0TodQz</string>
+    <string name="app_name">WillingQuiz</string>
+</resources>

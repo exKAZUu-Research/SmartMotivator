@@ -1,0 +1,14 @@
+= form_for @user, url: edit_auth_admin_user_path do |f|
+  .form-group
+    = f.label :login_id
+    .input-group
+      .input-group-btn
+        button.btn.btn-info[type="button" data-generate-password="#user_login_id"] = "#{User.t(:login_id)}を生成"
+      = f.text_field :login_id, class: 'form-control', required: true
+  .form-group
+    = f.label :password
+    .input-group
+      .input-group-btn
+        button.btn.btn-info[type="button" data-generate-password="#user_password"] = "#{User.t(:password)}を生成"
+      = f.text_field :password, class: 'form-control', required: true
+  button.btn.btn-primary[type='submit'] 設定

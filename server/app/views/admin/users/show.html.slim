@@ -1,0 +1,66 @@
+= page_title @user.name
+
+- if flash.key? :alert
+  .alert.alert-danger = flash[:alert]
+- if flash.key? :notice
+  .alert.alert-info = flash[:notice]
+
+.row
+  .col-sm-3
+    = render 'sidemenu', active: :show
+  .col-sm-9
+    .table-responsive: table.table.table-bordered
+      tr
+        th = User.t :id
+        td: .monospace = @user.id
+      tr
+        th = User.t :experiment_mode
+        td = @user.experiment_mode
+      tr
+        th = User.t :ready
+        td = @user.ready
+      tr
+        th = User.t :name
+        td = @user.name
+      tr
+        th = User.t :introduction
+        td = @user.introduction
+      tr
+        th = '%s / %s' % [User.t(:icon), User.t(:color)]
+        td = '%s / %s' % [@user.icon, @user.color]
+      tr
+        th = User.t :email
+        td = @user.email
+      tr
+        th = '%s / %s' % [User.t(:login_id), User.t(:password)]
+        td = '%s / %s' % [@user.login_id, @user.password]
+      tr
+        th = User.t :course
+        td = course_name(@user.course)
+      tr
+        th = User.t :school
+        td
+          - if @user.school_id.present?
+            = @user.school.internal_name
+      tr
+        th = User.t :point
+        td = number_with_delimiter @user.point
+      tr
+        th アンケート
+        td
+          dl
+            dt Started At
+            dd = @user.survey_started_at.try { |x| l(x) } || '-'
+            dt Resumed At
+            dd = @user.survey_resumed_at.try { |x| l(x) } || '-'
+            dt Finished At
+            dd = @user.survey_finished_at.try { |x| l(x) } || '-'
+      tr
+        th = User.t :setting
+        td: pre = JSON.pretty_generate(@user.setting)
+      tr
+        th = User.t :client_version
+        td = @user.client_version
+      tr
+        th = User.t :ip_address
+        td = @user.ip_address

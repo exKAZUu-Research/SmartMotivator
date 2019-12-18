@@ -1,0 +1,61 @@
+- if msg = flash[:notice]
+  .h4 実行結果
+  pre = msg
+
+= page_title 'コード実行'
+
+ruby:
+  action = Struct.new(:level, :title, :code, :desc)
+  actions = [
+    action.new(
+      :warning,
+      'バッチ処理（毎日）',
+      %{ScheduledJob.run_daily_jobs(Time.current)},
+      'cronにより毎日実行されている処理を直ちに実行します。' +
+      '各ユーザーの学習履歴(StudyHistory)が毎週分かならず存在するように、抜けている学習履歴を作成します。' +
+      'このコードの実行は今のところ悪影響を与えません。'),
+    action.new(
+      :danger,
+      'バッチ処理（毎週）',
+      %{ScheduledJob.run_weekly_jobs(Time.current)},
+      'cronにより毎週実行されている処理を直ちに実行します。' +
+      'autoRandomizeフラグが付いているユーザの促進機能をランダムに振り直します。' +
+      'また、全ユーザの対戦部屋をリセットし、前回の対戦結果を作成します。'),
+    action.new(
+      :info,
+      '学習履歴のキャッシュ削除',
+      %{StudyHistory.where(cached: true).update_all(cached: false)},
+      '学習履歴の統計データのキャッシュを削除します。' +
+      'データの不整合が起こったときなどに実行してください。' +
+      'このコードの実行は特に悪影響を与えません。'),
+    action.new(
+      :danger,
+      'ダミーユーザの作成',
+      %{User.create_dummies(100, Time.current, course: User::COURSE_ENGLISH)},
+      'ダミーユーザを作成します。' +
+      '作成したユーザは対戦相手等として出現してしまうので注意してください。'),
+    action.new(
+      :danger,
+      'ハイスコア ダミーデータ生成',
+      %{User.create_dummy_highscore},
+      'あなたの日々のハイスコアを生成します。最終アクセスした人が対象です'),
+    action.new(
+      :danger,
+      '学習リセット',
+      %{Study.reset_all(User.last)},
+      '学習内容をリセットします。最終アクセスした人が対象です'),
+    action.new(
+      :danger,
+      '2問正答',
+      %{Study.answer_2(User.last)},
+      '全ての問題に直ちに2問正答します。ただし「今覚えたフラグ」は変更しません。最終アクセスした人が対象です'),
+  ]
+- actions.each do |a|
+  .panel[class="panel-#{a.level}"]
+    .panel-heading = a.title
+    .panel-body
+      p = a.desc
+      pre = a.code
+      = form_tag admin_code_path do
+        input[type='hidden' name='code' value=a.code]
+        button.btn[class="btn-#{a.level}" type='submit' data-confirm="本当に「#{a.title}」を実行してよろしいですか？"] 実行

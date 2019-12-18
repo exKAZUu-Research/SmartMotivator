@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>クイズ API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>クイズ API</h1>
+
+      <div class="article">
+        <h2>事前テストの問題の取得</h2>
+        <h3>POST new_quizzes/start_pretest.json</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Content-Type: application/x-www-form-urlencoded
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">POST new_quizzes/start_pretest.json</pre>
+
+
+            <h4>Body</h4>
+            <pre class="request body">userId=bcc51b42-5d61-4f77-8862-927ebd95c096</pre>
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;9913f3f315916db9f3edaf29482dc94f&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 30438683-1e93-43a1-8b08-cfbd0f97c4ea
+X-Runtime: 0.031103
+Content-Length: 14311</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">[
+  {
+    &quot;label&quot;: &quot;初級&quot;,
+    &quot;quizzes&quot;: [
+      {
+        &quot;id&quot;: &quot;90fe5a98-bb3a-427d-996c-2b7116d179b3&quot;,
+        &quot;key&quot;: &quot;notice&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;notice&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;notice&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;～に気が付く&quot;,
+          &quot;させる&quot;,
+          &quot;～を落とす&quot;,
+          &quot;～を保つ&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/notice&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;ab837c29-881c-4f6e-b31d-c636c51a258d&quot;,
+        &quot;key&quot;: &quot;sign&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;sign&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;sign&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;記号&quot;,
+          &quot;名前&quot;,
+          &quot;銀行&quot;,
+          &quot;機能&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/sign&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;72b97a22-831f-4041-b6b3-d91b9583e163&quot;,
+        &quot;key&quot;: &quot;challenge&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;challenge&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;challenge&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;挑戦&quot;,
+          &quot;能力&quot;,
+          &quot;利点&quot;,
+          &quot;作者&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/challenge&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;f4f4d21a-ab10-480c-8d7c-8bb2cbeb2d21&quot;,
+        &quot;key&quot;: &quot;during&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;during&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;during&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;～の間中ずっと&quot;,
+          &quot;～へ向かって&quot;,
+          &quot;～の下で&quot;,
+          &quot;～の反対に&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/during&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;066f422c-0b85-4dc3-a5f6-c5947fed1890&quot;,
+        &quot;key&quot;: &quot;nor&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;nor&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;nor&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;AでもBでもない&quot;,
+          &quot;～にもかかわらず&quot;,
+          &quot;どちらかの&quot;,
+          &quot;～すると同時に&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/nor&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;3c7639fe-10d4-409e-91f0-b47a5b44c860&quot;,
+        &quot;key&quot;: &quot;likely&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;likely&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;likely&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;ありそうな&quot;,
+          &quot;否定的な&quot;,
+          &quot;内部の&quot;,
+          &quot;死んだ&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/likely&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;7c52ac39-362e-4ffd-870b-ab66422b6395&quot;,
+        &quot;key&quot;: &quot;foreign&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;foreign&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;foreign&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;外国の&quot;,
+          &quot;有意義な&quot;,
+          &quot;経済の&quot;,
+          &quot;広い&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/foreign&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;86881c6a-9536-4fa3-9e75-c3f096c9f096&quot;,
+        &quot;key&quot;: &quot;let&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;let&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;let&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;許す&quot;,
+          &quot;～を触る&quot;,
+          &quot;～を見積もる&quot;,
+          &quot;～に打撃を与える&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/let&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;d944a488-19a4-4305-a6e6-e6a53635ad53&quot;,
+        &quot;key&quot;: &quot;college&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;college&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;college&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;大学&quot;,
+          &quot;立ち入り&quot;,
+          &quot;前進&quot;,
+          &quot;数&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/college&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;77ac3cbc-e2dd-417f-8a05-5b5007a55126&quot;,
+        &quot;key&quot;: &quot;schedule&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;schedule&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;schedule&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;計画&quot;,
+          &quot;道&quot;,
+          &quot;蓄積&quot;,
+          &quot;量&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/schedule&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      }
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;中級&quot;,
+    &quot;quizzes&quot;: [
+      {
+        &quot;id&quot;: &quot;8b59df61-be76-4aff-993a-28733967814e&quot;,
+        &quot;key&quot;: &quot;tradition&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;tradition&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;tradition&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;伝統&quot;,
+          &quot;状態&quot;,
+          &quot;想像力&quot;,
+          &quot;付加&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/tradition&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;6cf47d6a-6835-4a40-bfdd-94a4c8769e24&quot;,
+        &quot;key&quot;: &quot;limit&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;limit&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;limit&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;制限&quot;,
+          &quot;特徴&quot;,
+          &quot;結果&quot;,
+          &quot;物質&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/limit&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;5bbeba77-e155-4ce4-813d-4e257785f3c3&quot;,
+        &quot;key&quot;: &quot;airline&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;airline&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;airline&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;航空会社&quot;,
+          &quot;密度&quot;,
+          &quot;建築&quot;,
+          &quot;出現&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/airline&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;a7c0f1f2-cba4-4289-a27f-f523c5967de6&quot;,
+        &quot;key&quot;: &quot;anger&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;anger&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;anger&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;怒り&quot;,
+          &quot;厳しさ&quot;,
+          &quot;習慣&quot;,
+          &quot;延長&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/anger&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;37ae05d4-a42a-4a77-8cb4-ca75ec2222ad&quot;,
+        &quot;key&quot;: &quot;excite&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;excite&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;excite&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;～を興奮させる&quot;,
+          &quot;～を運転する&quot;,
+          &quot;～に従う&quot;,
+          &quot;～を確かめる&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/excite&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;048c83c3-b7be-46db-a840-c36db108aa90&quot;,
+        &quot;key&quot;: &quot;access&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;access&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;access&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;立ち入り&quot;,
+          &quot;裁判所&quot;,
+          &quot;査定&quot;,
+          &quot;寝室&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/access&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;89dbd3ac-04e7-4cbf-b6e8-43f6afa4425b&quot;,
+        &quot;key&quot;: &quot;colleague&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;colleague&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;colleague&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;同僚&quot;,
+          &quot;個室&quot;,
+          &quot;壁&quot;,
+          &quot;専門家&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/colleague&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;bd9f78c7-3452-4f98-a327-00adcbc8ac89&quot;,
+        &quot;key&quot;: &quot;reality&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;reality&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;reality&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;現実&quot;,
+          &quot;血液&quot;,
+          &quot;辺&quot;,
+          &quot;貿易&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/reality&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;6c47caa8-bdfb-481c-a05f-d4d9b76e4f81&quot;,
+        &quot;key&quot;: &quot;pipe&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;pipe&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;pipe&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;～を吹く&quot;,
+          &quot;～をはねる&quot;,
+          &quot;起こる&quot;,
+          &quot;～を広げる&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/pipe&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;4c43c274-01a4-476c-bb81-ed74885a9d28&quot;,
+        &quot;key&quot;: &quot;excellent&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;excellent&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;excellent&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;優秀な&quot;,
+          &quot;安全な&quot;,
+          &quot;雄の&quot;,
+          &quot;潜在的な&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/excellent&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      }
+    ]
+  },
+  {
+    &quot;label&quot;: &quot;上級&quot;,
+    &quot;quizzes&quot;: [
+      {
+        &quot;id&quot;: &quot;32cbe0fa-98cb-4757-9afe-9d30a0be7ccf&quot;,
+        &quot;key&quot;: &quot;shareholder&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;shareholder&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;shareholder&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;株主&quot;,
+          &quot;不足額&quot;,
+          &quot;利害関係者&quot;,
+          &quot;しつけ&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/shareholder&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;fac4f278-1d70-422d-9afe-81104c0189cf&quot;,
+        &quot;key&quot;: &quot;interpretation&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;interpretation&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;interpretation&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;解釈&quot;,
+          &quot;症状&quot;,
+          &quot;大喜び&quot;,
+          &quot;構成&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/interpretation&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;8b728ce5-9afa-48b5-a5b3-887d46b0a9bc&quot;,
+        &quot;key&quot;: &quot;weird&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;weird&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;weird&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;奇妙な&quot;,
+          &quot;針金で補強した&quot;,
+          &quot;田舎の&quot;,
+          &quot;恐ろしい&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/weird&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;9c1b7f48-def8-4eb3-b70b-c821b3eed8b3&quot;,
+        &quot;key&quot;: &quot;acquisition&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;acquisition&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;acquisition&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;獲得&quot;,
+          &quot;要求&quot;,
+          &quot;尋問&quot;,
+          &quot;決定&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/acquisition&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;cbef8c49-3640-439d-aff5-ef6efd4bffc1&quot;,
+        &quot;key&quot;: &quot;faithfully&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;faithfully&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;faithfully&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;忠実に&quot;,
+          &quot;失敗しそうな&quot;,
+          &quot;表面的に&quot;,
+          &quot;全て&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/faithfully&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;5849c44a-6b96-4ff5-b48e-cb31bcdef409&quot;,
+        &quot;key&quot;: &quot;accommodation&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;accommodation&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;accommodation&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;宿泊施設&quot;,
+          &quot;農産物&quot;,
+          &quot;達成&quot;,
+          &quot;買い手&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/accommodation&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;36942721-592d-498b-9504-e4d9c9566032&quot;,
+        &quot;key&quot;: &quot;inflation&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;inflation&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;inflation&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;膨張&quot;,
+          &quot;履行&quot;,
+          &quot;構成&quot;,
+          &quot;刑務所&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/inflation&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;56eca8db-6de6-41fb-91be-bd235df0eadc&quot;,
+        &quot;key&quot;: &quot;subsequently&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;subsequently&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;subsequently&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;その後&quot;,
+          &quot;感謝して&quot;,
+          &quot;はっきり&quot;,
+          &quot;部分的に&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/subsequently&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;d0463ef9-df81-43ec-bbf8-471a51f2d66e&quot;,
+        &quot;key&quot;: &quot;shore&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;shore&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;shore&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;岸&quot;,
+          &quot;決定&quot;,
+          &quot;除去&quot;,
+          &quot;ごみ箱&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/shore&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      },
+      {
+        &quot;id&quot;: &quot;82aa82aa-5196-4a6e-a5f4-a5870b7fbe69&quot;,
+        &quot;key&quot;: &quot;grin&quot;,
+        &quot;courseKey&quot;: &quot;english&quot;,
+        &quot;label&quot;: &quot;grin&quot;,
+        &quot;subLabel&quot;: null,
+        &quot;preText&quot;: &quot;単語の意味を答えなさい。&quot;,
+        &quot;problem&quot;: &quot;grin&quot;,
+        &quot;inputType&quot;: &quot;text&quot;,
+        &quot;answers&quot;: [
+          &quot;歯を見せて笑う&quot;,
+          &quot;～を開発させる&quot;,
+          &quot;～を移す&quot;,
+          &quot;微笑む&quot;
+        ],
+        &quot;answerSize&quot;: 4,
+        &quot;correctIndex&quot;: 0,
+        &quot;shuffle&quot;: true,
+        &quot;commentaryLabel&quot;: null,
+        &quot;commentary&quot;: &quot;http://ejje.weblio.jp/content/grin&quot;,
+        &quot;defaultPercentage&quot;: null,
+        &quot;font&quot;: null,
+        &quot;images&quot;: {
+        },
+        &quot;correctCount&quot;: 0,
+        &quot;totalCount&quot;: 0
+      }
+    ]
+  }
+]</pre>
+      </div>
+    </div>
+  </body>
+</html>

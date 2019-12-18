@@ -1,0 +1,108 @@
+ruby:
+  def clickable(label)
+    link_to(label, 'javascript:void(0)')
+  end
+  teacher_enabled = @teachers.present?
+
+= page_title '生徒一覧'
+
+.bottom-space
+  .text-right
+    = link_to '学習状況詳細CSVダウンロード', download_csv_school_users_path, class: 'btn btn-primary', target: '_blank'
+
+  - if teacher_enabled
+    = form_tag school_users_path, method: :get, class: 'form-inline' do
+      .form-group
+        select.form-control#teacher[name='teacher']
+          option[value=''] = "（%sを選択）" % Teacher.t
+          - @teachers.each do |teacher|
+            option[value=teacher.id selected=(teacher.id == params['teacher'])] = teacher.name
+      button.btn.btn-default<[type='submit'] 絞り込む
+
+- if @users.empty?
+  p 生徒はいません
+- else
+  .table-responsive: table.table.table-bordered
+    thead
+      tr
+        - if current_school.prefix.present?
+          th = clickable(User.t :login_id)
+        - if current_school.email_domain.present?
+          th = clickable(User.t :email)
+        th = clickable(User.t :name)
+        th = clickable(User.t :point)
+        th = clickable(User.t :last_access)
+        th = clickable('利用状況')
+        - if teacher_enabled
+          th = clickable(Teacher.t)
+    tbody
+      - @users.each do |user|
+        tr
+          - if current_school.prefix.present?
+            td = user.login_id
+          - if current_school.email_domain.present?
+            td = user.email
+          td
+            => user.name
+            - if user.ready
+              span.label.label-success 登録済み
+            - elsif user.last_access
+              span.label.label-warning 登録中
+            - else
+              span.label.label-default 未着手
+          td.text-right[data-value=user.point] = user.point.to_s(:delimited)
+          td.text-center = user.last_access.try { |x| l(x) } || 'なし'
+          td
+            - if user.ready
+              = link_to "確認", school_user_path(user), class: 'btn btn-default'
+          - if teacher_enabled
+            td = user.teacher.try(&:name) || 'なし'
+
+javascript:
+  $('th').click(function(){
+      var table = $(this).parents('table').eq(0);
+      var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()));
+      this.asc = !this.asc;
+      if (!this.asc){rows = rows.reverse()};
+      for (var i = 0; i < rows.length; i++){table.append(rows[i])};
+      table.find("th").removeClass("headerSortUp");
+      table.find("th").removeClass("headerSortDown");
+      if (this.asc) {
+        $(this).addClass('headerSortUp');
+      } else {
+        $(this).addClass('headerSortDown');
+      };
+  })
+
+  function comparer(index) {
+      return function(a, b) {
+          var valA = getCellValue(a, index), valB = getCellValue(b, index);
+          return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB);
+      }
+  }
+
+  function getCellValue(row, index) {
+      var e = $(row).children('td').eq(index);
+      return e.data('value') || e.html();
+  }
+
+css:
+  .headerSortDown:after,
+  .headerSortUp:after{
+      content: ' ';
+      position: relative;
+      left: 10px;
+      border: 7px solid transparent;
+  }
+  .headerSortDown:after{
+      top: 10px;
+      border-top-color: black;
+  }
+  .headerSortUp:after{
+      bottom: 15px;
+      border-bottom-color: black;
+  }
+  .headerSortDown,
+  .headerSortUp{
+      padding-left: 20px;
+  }
