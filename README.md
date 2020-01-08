@@ -9,7 +9,7 @@ A quiz app including a feature for motivating users.
 
 ## Copyright
 
-Copyright (c) 2018, Inter-University Research Institute Corporation Research Organization of Information and Systems ("ROIS")
+Copyright (c) 2018, Inter-University Research Institute Corporation Research Organization of Information and Systems (ROIS)
 
 ## License
 
