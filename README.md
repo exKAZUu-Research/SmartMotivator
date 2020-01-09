@@ -1,4 +1,4 @@
-# WillingQuiz
+# SmartMotivator
 
 A quiz app including a feature for motivating users.
 
