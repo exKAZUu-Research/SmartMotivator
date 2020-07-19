@@ -24,7 +24,7 @@
     "babel-plugin-transform-remove-console": "^6.9.0",
     "fbemitter": "^2.1.1",
     "immutable": "4.0.0-rc.7",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "moment": "^2.20.1",
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.4",
